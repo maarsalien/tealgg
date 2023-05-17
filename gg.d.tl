@@ -264,7 +264,10 @@ global record gg
   isProcessPaused: function(): boolean
   isVisible: function(): boolean
   loadList: function(file: string, flags: integer): boolean | string
-  loadResults: function(results: Item): boolean | string
+  
+  loadResults: function(results: ListItemIn): boolean | string
+  loadResults: function(results: ListItemOut): boolean | string
+
   makeRequest: function(url: string, headers: MakeRequestHeaders, data: string): MakeRequestResponse | string
 
   --TODO: figure out how to type this
