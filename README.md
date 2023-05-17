@@ -1,4 +1,4 @@
-# Unoficial GameGuardian Types for Teal Language
+# Unofficial GameGuardian Types for Teal Language
 
 # Work in progress
 
