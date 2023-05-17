@@ -1,0 +1,31 @@
+name: Check TL syntax
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y lua5.4
+          sudo apt-get install -y liblua5.4-dev
+          sudo apt-get install -y luarocks
+          sudo luarocks install tl
+          sudo luarocks install cyan
+          sudo luarocks install luacheck
+      - name: Run TL syntax check
+        run: |
+          find . -name "*.tl" -exec cyan check  {} +
+      - name: Run Lua syntax check
+        run: |
+          find . -name "*.lua" -exec luacheck {} +
